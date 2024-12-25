@@ -12,6 +12,7 @@ SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_ENABLE = yes           # OLED display
 CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
+COMBO_ENABLE = yes
 
 
 # If you want to change the display of OLED, you need to change here
