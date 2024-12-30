@@ -3,6 +3,7 @@
 #    include "keymap.h"
 #endif
 
+
 const  uint16_t  PROGMEM  _456_to_0_rcombo[]            =  {KC_4,     KC_5,     KC_6,        COMBO_END};  
 const  uint16_t  PROGMEM  _56_to_0_rcombo[]             =  {KC_5,     KC_6,     COMBO_END};               
 const  uint16_t  PROGMEM  _ampAstrUnds_to_0_rcombo[]    =  {KC_AMPR,  KC_ASTR,  KC_UNDS,     COMBO_END};  
@@ -12,7 +13,7 @@ const  uint16_t  PROGMEM  _fp_to_2_combo[]              =  {KC_F,     KC_P,     
 const  uint16_t  PROGMEM  _lu_to_2_combo[]              =  {KC_L,     KC_U,     COMBO_END};               
 const  uint16_t  PROGMEM  _uy_to_1_combo[]              =  {KC_U,     KC_Y,     COMBO_END};               
 const  uint16_t  PROGMEM  _wf_to_1_combo[]              =  {KC_W,     KC_F,     COMBO_END};               
-const  uint16_t  PROGMEM  _se_cw_combo[]                =  {KC_S,     KC_E,     COMBO_END};               
+const  uint16_t  PROGMEM  _wfuy_to_1_combo[]            =  {KC_W,     KC_F,     KC_U,        KC_Y,        COMBO_END};
 const  uint16_t  PROGMEM  _rsei_caps_combo[]            =  {KC_R,     KC_S,     KC_E,        KC_I,        COMBO_END};
 const  uint16_t  PROGMEM  _ei_osm_rshift_combo[]        =  {KC_E,     KC_I,     COMBO_END};               
 const  uint16_t  PROGMEM  _rs_osm_lsft_combo[]          =  {KC_R,     KC_S,     COMBO_END};               
@@ -24,6 +25,8 @@ const  uint16_t  PROGMEM  _ln_rgui_combo[]              =  {KC_L,     KC_N,     
 const  uint16_t  PROGMEM  _qw_esc_combo[]               =  {KC_Q,     KC_W,     COMBO_END};               
 const  uint16_t  PROGMEM  _rbcRcbr_to_0_combo[]         =  {KC_RBRC,  KC_RCBR,  COMBO_END};               
 const  uint16_t  PROGMEM  _ue_ralt_combo[]              =  {KC_U,     KC_E,     COMBO_END};               
+const  uint16_t  PROGMEM  _ne_bspc_combo[]              =  {KC_N,     KC_E,     COMBO_END};               
+const  uint16_t  PROGMEM  _plusRbrc_bspc_combo[]        =  {KC_PLUS,  KC_RBRC,  COMBO_END};               
 
 
 combo_t key_combos[] = {
@@ -35,11 +38,13 @@ combo_t key_combos[] = {
 	COMBO(  _ni_osm_rctl_combo,    OSM(MOD_RCTL)  ),
 	COMBO(  _rt_osm_rctl_combo,    OSM(MOD_RCTL)  ),
 	COMBO(  _rsei_caps_combo,      KC_CAPS        ),
-	COMBO(  _se_cw_combo,          CW_TOGG        ),
 	COMBO(  _wf_to_1_combo,        OSL(1)         ),
 	COMBO(  _uy_to_1_combo,        OSL(1)         ),
+	COMBO(  _wfuy_to_1_combo,      TO(1)          ),
 	COMBO(  _lu_to_2_combo,        OSL(2)         ),
 	COMBO(  _fp_to_2_combo,        OSL(2)         ),
+	COMBO(  _ne_bspc_combo,        KC_BSPC        ),
+	COMBO(  _plusRbrc_bspc_combo,  KC_BSPC        ),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -91,14 +96,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [4] = LAYOUT(
 
-		    TO(0),  KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,    /*       *   *   */       TO(4),    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_BSPC,
+		    TO(0),  KC_NO,   KC_NO,   STN_N1,    KC_NO,   KC_NO,    /*       *   *   */       TO(4),    KC_NO,  KC_NO,  STN_N1,  KC_NO,  KC_BSPC,
 
 		    KC_NO,  STN_S1,  STN_TL,  STN_PL,   STN_HL,  STN_ST1,  /*       *   *   */       STN_ST3,  STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
 
 		    KC_NO,  STN_S2,  STN_KL,  STN_WL,  STN_RL,   STN_ST2,  /*       *   *   */       STN_ST4,  STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
 
 		    KC_NO,  KC_NO,   KC_NO,   KC_NO,    STN_A,   STN_O,    KC_NO,   /*  */  KC_NO,   STN_E,    STN_U,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-		    /*      *        *        */KC_NO,  KC_NO,   KC_NO,    KC_SPC,  /*  */  KC_ENT,  KC_NO,    KC_NO,  KC_NO                   
+		    /*      *        *        */KC_NO,  TO(3),   STN_A,    STN_O,  /*  */  STN_E,  STN_U,    KC_NO,  KC_NO                   
 		),
 };
 
