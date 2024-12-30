@@ -30,7 +30,9 @@ jobs:
         path: users/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile -e CONVERT_TO=promicro_rp2040 -kb lily58/rev1
+      run: 
+        - ls -la
+        - qmk compile -e CONVERT_TO=promicro_rp2040 -kb lily58/rev1
 
     - name: Archive firmware
       uses: actions/upload-artifact@v3
