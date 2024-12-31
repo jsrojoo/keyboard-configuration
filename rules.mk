@@ -14,6 +14,7 @@ CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 STENO_ENABLE = yes
 STENO_PROTOCOL = geminipr
+BOOTLOADER = rp2040
 
 
 # If you want to change the display of OLED, you need to change here
