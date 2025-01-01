@@ -48,8 +48,8 @@ const  uint16_t  PROGMEM  _bx_combo[]                   =  {KC_B,     KC_X,     
 const  uint16_t  PROGMEM  _bc_combo[]                   =  {KC_B,     KC_C,     COMBO_END};               
 const  uint16_t  PROGMEM  _bv_combo[]                   =  {KC_B,     KC_V,     COMBO_END};               
 
-const  uint16_t  PROGMEM  _kme_combo[]                  =  {KC_K, KC_M, KC_E, COMBO_END};
-const  uint16_t  PROGMEM  _kmDot_combo[]                =  {KC_K, KC_M, KC_E, COMBO_END};
+const  uint16_t  PROGMEM  _knei_combo[]                  =  {KC_K, KC_N, KC_E, KC_I, COMBO_END};
+const  uint16_t  PROGMEM  _kmComm_combo[]                =  {KC_K, KC_M, KC_COMM, COMBO_END};
 
 const  uint16_t  PROGMEM  _kni_combo[]                  =  {KC_K, KC_N, KC_I, COMBO_END};
 const  uint16_t  PROGMEM  _kio_combo[]                  =  {KC_K, KC_I, KC_O, COMBO_END};
@@ -70,6 +70,9 @@ const  uint16_t  PROGMEM  _fpm_combo[]                  =  {KC_F, KC_P, KC_M, CO
 const  uint16_t  PROGMEM  _fpo_combo[]                  =  {KC_F, KC_P, KC_O, COMBO_END};
 const  uint16_t  PROGMEM  _fpComm_combo[]               =  {KC_F, KC_P, KC_COMM, COMBO_END};
 const  uint16_t  PROGMEM  _fpDot_combo[]                =  {KC_F, KC_P, KC_DOT, COMBO_END};
+
+const  uint16_t  PROGMEM  _bwf_combo[]                =  {KC_B, KC_W, KC_F, COMBO_END};
+const  uint16_t  PROGMEM  _kuy_combo[]                =  {KC_K, KC_U, KC_Y, COMBO_END};
 
 const  uint16_t  PROGMEM  _lsft_a_combo[]                = { KC_R, KC_S, KC_A, COMBO_END };
 const  uint16_t  PROGMEM  _rsft_a_combo[]                = { KC_E, KC_I, KC_A, COMBO_END };
@@ -196,16 +199,15 @@ combo_t key_combos[] = {
 	COMBO(  _klu_combo,          	 OSL(2)         ),
 	COMBO(  _bfp_combo,              OSL(2)         ),
 
-	COMBO(  _kme_combo,         	 LCTL(KC_BSPC)  ),
-	COMBO(  _kmDot_combo,         	 KC_BSPC  ),
+	COMBO(  _knei_combo,         	 LCTL(KC_BSPC)  ),
+	COMBO(  _kne_combo,     	 KC_BSPC  ),
 
 	COMBO(  _brs_osm_lsft_combo,     OSM(MOD_LSFT)  ),
 	COMBO(  _kei_osm_rshift_combo,   OSM(MOD_LSFT)  ),
 
-	COMBO(  _kni_combo,     	 OSM(MOD_LCTL)  ),
 	COMBO(  _kio_combo,     	 OSM(MOD_LCTL)  ),
+	COMBO(  _kni_combo,         	 OSM(MOD_LCTL)  ),
 
-	COMBO(  _kne_combo,     	 OSM(MOD_LCTL)  ),
 	COMBO(  _bst_combo,     	 OSM(MOD_LCTL)  ),
 
 	COMBO(  _brt_combo,     	 OSM(MOD_LCTL)  ),
@@ -217,6 +219,7 @@ combo_t key_combos[] = {
 	COMBO(  _kl_ampr_combo,         KC_AMPR        ),
 	COMBO(  _ku_astr_combo,         KC_ASTR        ),
 	COMBO(  _ky_unds_combo,         KC_UNDS        ),
+
 	COMBO(  _kScln_coln_combo,      KC_COLN        ),
 	COMBO(  _kGrv_tild_combo,       KC_TILD        ),
 
@@ -235,6 +238,9 @@ combo_t key_combos[] = {
 	COMBO(  _bx_combo,              KC_PIPE        ),
 	COMBO(  _bc_combo,              KC_QUOT        ),
 	COMBO(  _bv_combo,              KC_COLN        ),
+
+	COMBO(  _bwf_combo,              KC_QUOT        ),
+	COMBO(  _kuy_combo,              KC_DQUO        ),
 
 	COMBO(  _bTab_grv_combo,        KC_GRV         ),             
 	COMBO(  _bq_exlm_combo,         KC_EXLM        ),
