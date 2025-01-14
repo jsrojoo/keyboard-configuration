@@ -11,8 +11,8 @@ const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R,    KC_S,  KC_E,        KC_I
 const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,    KC_S,  COMBO_END};
 const  uint16_t  PROGMEM  _ei_combo[]    =  {KC_E,    KC_I,  COMBO_END};
 
-const  uint16_t  PROGMEM  _nei_combo[]    =  {KC_N, KC_E,    KC_I,  COMBO_END};
-const  uint16_t  PROGMEM  _rst_combo[]    =  {KC_R,    KC_S, KC_T,  COMBO_END};
+const  uint16_t  PROGMEM  _wfp_combo[]    =  {KC_W, KC_F,    KC_P,  COMBO_END};
+const  uint16_t  PROGMEM  _luy_combo[]    =  {KC_L,    KC_U, KC_Y,  COMBO_END};
 
 const  uint16_t  PROGMEM  _wfuy_combo[]    =  {KC_W,    KC_F,  KC_U,        KC_Y,  COMBO_END};
 
@@ -29,8 +29,8 @@ combo_t key_combos[] = {
 	COMBO(  _rs_combo,             OSM(MOD_LSFT)  ),
 	COMBO(  _ei_combo,             OSM(MOD_LSFT)  ),
 
-	COMBO(  _nei_combo,            OSL(1)         ),
-	COMBO(  _rst_combo,            OSL(1)         ),
+	COMBO(  _wfp_combo,            OSL(1)         ),
+	COMBO(  _luy_combo,            OSL(1)         ),
 
 	COMBO(  _rsei_combo,           KC_CAPS        ),
 	COMBO(  _wfuy_combo,           KC_CAPS        ),
