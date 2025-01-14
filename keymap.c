@@ -9,6 +9,11 @@ const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,  COMBO_END};
 const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,  COMBO_END};         
 const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R,    KC_S,  KC_E,        KC_I,  COMBO_END};
 const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,    KC_S,  COMBO_END};
+const  uint16_t  PROGMEM  _ei_combo[]    =  {KC_E,    KC_I,  COMBO_END};
+
+const  uint16_t  PROGMEM  _nei_combo[]    =  {KC_N, KC_E,    KC_I,  COMBO_END};
+const  uint16_t  PROGMEM  _rst_combo[]    =  {KC_R,    KC_S, KC_T,  COMBO_END};
+
 const  uint16_t  PROGMEM  _wfuy_combo[]    =  {KC_W,    KC_F,  KC_U,        KC_Y,  COMBO_END};
 
 const  uint16_t  PROGMEM  _fplu_combo[]    =  {KC_F,    KC_P,  KC_L, KC_U, COMBO_END};
@@ -18,9 +23,14 @@ combo_t key_combos[] = {
 	COMBO(  _lthumb_combo,         OSM(MOD_LCTL)  ),
 	COMBO(  _rthumb_combo,         OSM(MOD_LCTL)  ),
 
-	COMBO(  _uy_combo,             OSM(MOD_LSFT)  ),
-	COMBO(  _wf_combo,             OSM(MOD_LSFT)  ),
+	COMBO(  _uy_combo,             OSM(MOD_LCTL)  ),
+	COMBO(  _wf_combo,             OSM(MOD_LCTL)  ),
+
 	COMBO(  _rs_combo,             OSM(MOD_LSFT)  ),
+	COMBO(  _ei_combo,             OSM(MOD_LSFT)  ),
+
+	COMBO(  _nei_combo,            OSL(1)         ),
+	COMBO(  _rst_combo,            OSL(1)         ),
 
 	COMBO(  _rsei_combo,           KC_CAPS        ),
 	COMBO(  _wfuy_combo,           KC_CAPS        ),
@@ -57,7 +67,7 @@ void leader_end_user(void) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-		    KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, 							KC_6, KC_7, LALT_T(KC_8), LGUI_T(KC_9), KC_0, QK_LEAD,
+		    KC_GRV, KC_1, LGUI_T(KC_2), LALT_T(KC_3), KC_4, KC_5,					KC_6, KC_7, LALT_T(KC_8), LGUI_T(KC_9), KC_0, QK_LEAD,
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 

@@ -1,21 +1,22 @@
-LTO_ENABLE = yes            # Link Time Optimization enabled
-BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
-MOUSEKEY_ENABLE = yes        # Mouse keys
-EXTRAKEY_ENABLE = yes        # Audio control and System control
-CONSOLE_ENABLE = no         # Console for debug
-COMMAND_ENABLE = no         # Commands for debug and configuration
-NKRO_ENABLE = yes            # N-Key Rollover
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-AUDIO_ENABLE = no           # Audio output
-RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
-SWAP_HANDS_ENABLE = no      # Enable one-hand typing
-OLED_ENABLE = yes           # OLED display
-CAPS_WORD_ENABLE = yes
-LEADER_ENABLE = yes
-COMBO_ENABLE = yes
-STENO_ENABLE = yes
-STENO_PROTOCOL = geminipr
-BOOTLOADER = rp2040
+AUDIO_ENABLE       =  no        #  Audio     output                                  
+BACKLIGHT_ENABLE   =  no        #  Enable    keyboard   backlight     functionality  
+BOOTLOADER         =  rp2040                                                         
+BOOTMAGIC_ENABLE   =  no        #  Enable    Bootmagic  Lite                         
+CAPS_WORD_ENABLE   =  yes                                                            
+COMBO_ENABLE       =  yes                                                            
+COMMAND_ENABLE     =  no        #  Commands  for        debug         and            configuration
+CONSOLE_ENABLE     =  no        #  Console   for        debug                        
+EXTRAKEY_ENABLE    =  yes       #  Audio     control    and           System         control
+LEADER_ENABLE      =  yes                                                            
+LTO_ENABLE         =  yes       #  Link      Time       Optimization  enabled        
+MOUSEKEY_ENABLE    =  yes       #  Mouse     keys                                    
+NKRO_ENABLE        =  yes       #  N-Key     Rollover                                
+OLED_ENABLE        =  yes       #  OLED      display                                 
+RGBLIGHT_ENABLE    =  no        #  Enable    WS2812     RGB           underlight.    
+SPLIT_KEYBOARD     =  yes                                                            
+STENO_ENABLE       =  yes                                                            
+STENO_PROTOCOL     =  geminipr                                                       
+SWAP_HANDS_ENABLE  =  no        #  Enable    one-hand   typing                       
 
 
 # If you want to change the display of OLED, you need to change here
