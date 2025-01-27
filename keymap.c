@@ -3,39 +3,46 @@
 #    include "keymap.h"
 #endif
 
-const  uint16_t  PROGMEM  _lthumb_combo[]  =  {OSL(1),  KC_B,  COMBO_END};         
-const  uint16_t  PROGMEM  _rthumb_combo[]  =  {OSL(1),  KC_K,  COMBO_END};         
-const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,  COMBO_END};         
-const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,  COMBO_END};         
-const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R,    KC_S,  KC_E,        KC_I,  COMBO_END};
-const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,    KC_S,  COMBO_END};
-const  uint16_t  PROGMEM  _ei_combo[]    =  {KC_E,    KC_I,  COMBO_END};
+const  uint16_t  PROGMEM  _lthumb_combo[]  =  {OSL(1),  KC_B,     COMBO_END};               
+const  uint16_t  PROGMEM  _rthumb_combo[]  =  {OSL(1),  KC_K,     COMBO_END};               
+const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,     COMBO_END};               
+const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,     COMBO_END};               
+const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R,    KC_S,     KC_E,        KC_I,        COMBO_END};
+const  uint16_t  PROGMEM  _rs_combo[]      =  {KC_R,    KC_S,     COMBO_END};               
+const  uint16_t  PROGMEM  _ei_combo[]      =  {KC_E,    KC_I,     COMBO_END};               
+const  uint16_t  PROGMEM  _wfp_combo[]     =  {KC_W,    KC_F,     KC_P,        COMBO_END};  
+const  uint16_t  PROGMEM  _luy_combo[]     =  {KC_L,    KC_U,     KC_Y,        COMBO_END};  
+const  uint16_t  PROGMEM  _wfuy_combo[]    =  {KC_W,    KC_F,     KC_U,        KC_Y,        COMBO_END};
+const  uint16_t  PROGMEM  _fp_combo[]      =  {KC_F,    KC_P,     COMBO_END};               
+const  uint16_t  PROGMEM  _lu_combo[]      =  {KC_L,    KC_U,     COMBO_END};               
+const  uint16_t  PROGMEM  _yScoln_combo[]  =  {KC_Y,    KC_SCLN,  COMBO_END};               
+const  uint16_t  PROGMEM  _qw_combo[]      =  {KC_Q,    KC_W,     COMBO_END};               
+const  uint16_t  PROGMEM  _fplu_combo[]    =  {KC_F,    KC_P,     KC_L,        KC_U,        COMBO_END};
 
-const  uint16_t  PROGMEM  _wfp_combo[]    =  {KC_W, KC_F,    KC_P,  COMBO_END};
-const  uint16_t  PROGMEM  _luy_combo[]    =  {KC_L,    KC_U, KC_Y,  COMBO_END};
-
-const  uint16_t  PROGMEM  _wfuy_combo[]    =  {KC_W,    KC_F,  KC_U,        KC_Y,  COMBO_END};
-
-const  uint16_t  PROGMEM  _fplu_combo[]    =  {KC_F,    KC_P,  KC_L, KC_U, COMBO_END};
+const  uint16_t  PROGMEM  _23_combo[]      =  {KC_2,    KC_3,     COMBO_END};               
+const  uint16_t  PROGMEM  _89_combo[]      =  {KC_8,    KC_9,     COMBO_END};               
 
 combo_t key_combos[] = {
 
-	COMBO(  _lthumb_combo,         OSM(MOD_LCTL)  ),
-	COMBO(  _rthumb_combo,         OSM(MOD_LCTL)  ),
+	COMBO(  _lthumb_combo,  OSM(MOD_LCTL)  ),
+	COMBO(  _rthumb_combo,  OSM(MOD_LCTL)  ),
+	COMBO(  _uy_combo,      OSM(MOD_LCTL)  ),
+	COMBO(  _wf_combo,      OSM(MOD_LCTL)  ),
+	COMBO(  _rs_combo,      OSM(MOD_LSFT)  ),
+	COMBO(  _ei_combo,      OSM(MOD_LSFT)  ),
 
-	COMBO(  _uy_combo,             OSM(MOD_LCTL)  ),
-	COMBO(  _wf_combo,             OSM(MOD_LCTL)  ),
+	COMBO(  _23_combo,      OSM(MOD_LALT)  ),
+	COMBO(  _89_combo,      OSM(MOD_LALT)  ),
 
-	COMBO(  _rs_combo,             OSM(MOD_LSFT)  ),
-	COMBO(  _ei_combo,             OSM(MOD_LSFT)  ),
-
-	COMBO(  _wfp_combo,            OSL(1)         ),
-	COMBO(  _luy_combo,            OSL(1)         ),
-
-	COMBO(  _rsei_combo,           KC_CAPS        ),
-	COMBO(  _wfuy_combo,           KC_CAPS        ),
-
-	COMBO(  _fplu_combo,           TO(2)          ),
+	COMBO(  _wfp_combo,     OSL(1)         ),
+	COMBO(  _luy_combo,     OSL(1)         ),
+	COMBO(  _fp_combo,      OSL(2)         ),
+	COMBO(  _lu_combo,      OSL(2)         ),
+	COMBO(  _yScoln_combo,  OSL(2)         ),
+	COMBO(  _qw_combo,      OSL(2)         ),
+	COMBO(  _rsei_combo,    KC_CAPS        ),
+	COMBO(  _wfuy_combo,    KC_CAPS        ),
+	COMBO(  _fplu_combo,    TO(2)          ),
 
 };
 
@@ -83,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_GRV, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, 						KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_COLN, KC_BSPC,
 
-		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO, 
+		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,						KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO, 
 
 		   KC_NO, KC_BSLS, KC_PIPE, KC_QUOT, KC_COLN, KC_QUOT, KC_LT,					KC_GT, KC_DQUO, KC_MINS, KC_DQUO, KC_TILD, KC_QUES, KC_NO, 
 

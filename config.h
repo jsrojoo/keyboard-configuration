@@ -28,6 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FORCE_NKRO
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 250
+#define COMBO_TERM 30
+
 
 /*#undef RGBLIGHT_LED_COUNT*/
 /*#define RGBLIGHT_EFFECT_BREATHING*/
