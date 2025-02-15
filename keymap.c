@@ -68,7 +68,7 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
