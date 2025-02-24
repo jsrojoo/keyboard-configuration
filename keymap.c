@@ -5,43 +5,33 @@
 
 const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,     COMBO_END};
 const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,     COMBO_END};
+const  uint16_t  PROGMEM  _wfuy_combo[]      =  {KC_W,    KC_F, KC_U,    KC_Y,     COMBO_END};
+
 const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R,    KC_S,     KC_E,        KC_I,        COMBO_END};
 const  uint16_t  PROGMEM  _rs_combo[]      =  {KC_R,    KC_S,     COMBO_END};
 const  uint16_t  PROGMEM  _ei_combo[]      =  {KC_E,    KC_I,     COMBO_END};
 const  uint16_t  PROGMEM  _wfp_combo[]     =  {KC_W,    KC_F,     KC_P,        COMBO_END};
-const  uint16_t  PROGMEM  _luy_combo[]     =  {KC_L,    KC_U,     KC_Y,        COMBO_END};
-const  uint16_t  PROGMEM  _wfuy_combo[]    =  {KC_W,    KC_F,     KC_U,        KC_Y,        COMBO_END};
-const  uint16_t  PROGMEM  _yScoln_combo[]  =  {KC_Y,    KC_SCLN,  COMBO_END};
-const  uint16_t  PROGMEM  _qw_combo[]      =  {KC_Q,    KC_W,     COMBO_END};
+
 const  uint16_t  PROGMEM  _fplu_combo[]    =  {KC_F,    KC_P,     KC_L,        KC_U,        COMBO_END};
 
 const  uint16_t  PROGMEM  _fp_combo[]      =  {KC_F,    KC_P,     COMBO_END};
 const  uint16_t  PROGMEM  _lu_combo[]      =  {KC_L,    KC_U,     COMBO_END};
 
-const  uint16_t  PROGMEM  _ln_combo[]      =  {KC_L,    KC_N,     COMBO_END};
-const  uint16_t  PROGMEM  _pt_combo[]      =  {KC_P,    KC_T,     COMBO_END};
-
 
 combo_t key_combos[] = {
 	COMBO(  _uy_combo,      OSM(MOD_LCTL)  ),
 	COMBO(  _wf_combo,      OSM(MOD_LCTL)  ),
+
 	COMBO(  _rs_combo,      OSM(MOD_LSFT)  ),
 	COMBO(  _ei_combo,      OSM(MOD_LSFT)  ),
-	COMBO(  _ln_combo,      OSM(MOD_LSFT)  ),
-	COMBO(  _pt_combo,      OSM(MOD_LSFT)  ),
-
-	COMBO(  _wfp_combo,     OSL(1)         ),
-	COMBO(  _luy_combo,     OSL(1)         ),
 
 	COMBO(  _fp_combo,      OSL(5)         ),
 	COMBO(  _lu_combo,      OSL(5)         ),
-
-	COMBO(  _yScoln_combo,  OSL(2)         ),
-	COMBO(  _qw_combo,      OSL(2)         ),
+	COMBO(  _fplu_combo,    TO(5)          ),
 
 	COMBO(  _rsei_combo,    CW_TOGG        ),
 	COMBO(  _wfuy_combo,    KC_CAPS        ),
-	COMBO(  _fplu_combo,    TO(2)          ),
+
 
 };
 
@@ -100,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
 		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                 KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_NO, KC_ESC, KC_NO, KC_UP, KC_NO, KC_NO,						 	           KC_NO, KC_7, KC_8, KC_9, KC_0, KC_DEL,
+		   KC_NO, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO,						 	           KC_NO, KC_7, KC_8, KC_9, KC_0, KC_DEL,
 
-		   TO(0), KC_SPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						     KC_TRNS, LCTL_T(KC_4), LSFT_T(KC_5), LALT_T(KC_6), LGUI_T(KC_0), KC_NO,
+		   TO(0), KC_A, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						       KC_TRNS, LCTL_T(KC_4), LSFT_T(KC_5), LALT_T(KC_6), LGUI_T(KC_0), KC_NO,
 
 		   KC_NO, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, KC_NO,
 
@@ -135,11 +125,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [5] = LAYOUT(
 
-		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		        KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
+		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
+		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
