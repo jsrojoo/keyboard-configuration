@@ -13,12 +13,20 @@ const  uint16_t  PROGMEM  _ei_combo[]      =  {KC_E,    KC_I,     COMBO_END};
 const  uint16_t  PROGMEM  _wfp_combo[]     =  {KC_W,    KC_F,     KC_P,        COMBO_END};
 
 const  uint16_t  PROGMEM  _fplu_combo[]    =  {KC_F,    KC_P,     KC_L,        KC_U,        COMBO_END};
-
 const  uint16_t  PROGMEM  _fp_combo[]      =  {KC_F,    KC_P,     COMBO_END};
+
 const  uint16_t  PROGMEM  _lu_combo[]      =  {KC_L,    KC_U,     COMBO_END};
+const  uint16_t  PROGMEM  _ne_combo[]      =  {KC_N,    KC_E,     COMBO_END};
+const  uint16_t  PROGMEM  _amprAstr_combo[]      =  {KC_AMPR, KC_ASTR,     COMBO_END};
+const  uint16_t  PROGMEM  _plusRbrc_combo[]      =  {KC_PLUS, KC_RBRC,     COMBO_END};
+
 
 
 combo_t key_combos[] = {
+
+	COMBO(  _ne_combo,            QK_LEAD  ),
+	COMBO(  _plusRbrc_combo,      QK_LEAD  ),
+
 	COMBO(  _uy_combo,      OSM(MOD_LCTL)  ),
 	COMBO(  _wf_combo,      OSM(MOD_LCTL)  ),
 
@@ -26,12 +34,11 @@ combo_t key_combos[] = {
 	COMBO(  _ei_combo,      OSM(MOD_LSFT)  ),
 
 	COMBO(  _fp_combo,      OSL(5)         ),
-	COMBO(  _lu_combo,      OSL(5)         ),
 	COMBO(  _fplu_combo,    TO(5)          ),
+	COMBO(  _lu_combo,      OSL(5)          ),
 
 	COMBO(  _rsei_combo,    CW_TOGG        ),
 	COMBO(  _wfuy_combo,    KC_CAPS        ),
-
 
 };
 
@@ -40,18 +47,40 @@ void leader_start_user(void) {
 }
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_F)) {
-        SEND_STRING("QMK is awesome.");
+    if (leader_sequence_one_key(KC_A)) {
+        layer_off(1);
+        layer_off(2);
+        layer_off(3);
+        layer_off(5);
+        layer_on(0);
+    } else if (leader_sequence_one_key(KC_LPRN)) {
+        layer_off(1);
+        layer_off(2);
+        layer_off(3);
+        layer_off(5);
+        layer_on(0);
+    } else if (leader_sequence_one_key(KC_1)) {
+        layer_off(1);
+        layer_off(2);
+        layer_off(3);
+        layer_off(5);
+        layer_on(0);
     } else if (leader_sequence_one_key(KC_Q)) {
         tap_code16(KC_ESC);
     } else if (leader_sequence_one_key(QK_LEAD)) {
-        SEND_STRING("leader key pressed.");
-    } else if (leader_sequence_two_keys(KC_F, KC_F)) {
-        // Leader, f => Types the below string
-        SEND_STRING("QMK is awesomeness.");
-    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
+        layer_on(5);
+    } else if (leader_sequence_one_key(KC_S)) {
+        tap_code16(KC_QUOT);
+    } else if (leader_sequence_one_key(KC_T)) {
+        tap_code16(KC_DQUO);
+    } else if (leader_sequence_one_key(KC_LBRC)) {
+        tap_code16(KC_QUOT);
+    } else if (leader_sequence_one_key(KC_EQL)) {
+        tap_code16(KC_DQUO);
+    } else if (leader_sequence_two_keys(KC_D, KC_W)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
-        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+        /*SEND_STRING(SS_LCTL("a") SS_LCTL("c"));*/
+        tap_code16(LCTL(KC_BSPC));
     } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
         // Leader, d, d, s => Types the below string
         SEND_STRING("https://start.duckduckgo.com\n");
@@ -90,13 +119,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
 		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                 KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_NO, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO,						 	           KC_NO, KC_7, KC_8, KC_9, KC_0, KC_DEL,
+		   KC_NO, KC_Q, KC_NO, KC_UP, KC_NO, KC_NO,						 	           KC_NO, KC_7, KC_8, KC_9, KC_0, KC_DEL,
 
 		   TO(0), KC_A, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						       KC_TRNS, LCTL_T(KC_4), LSFT_T(KC_5), LALT_T(KC_6), LGUI_T(KC_0), KC_NO,
 
 		   KC_NO, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, OSL(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(5), TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -108,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, OSL(1), TO(2), QK_BOOT
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(5), TO(2), QK_BOOT
 		    ),
 
     [4] = LAYOUT(
@@ -133,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
-		    					TO(2), TO(3), OSL(1), KC_SPC,		 KC_ENT, OSL(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(5), TO(2), TO(3)
 
 		   ),
 };
