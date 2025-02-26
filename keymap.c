@@ -19,26 +19,29 @@ const  uint16_t  PROGMEM  _lu_combo[]      =  {KC_L,    KC_U,     COMBO_END};
 const  uint16_t  PROGMEM  _ne_combo[]      =  {KC_N,    KC_E,     COMBO_END};
 const  uint16_t  PROGMEM  _amprAstr_combo[]      =  {KC_AMPR, KC_ASTR,     COMBO_END};
 const  uint16_t  PROGMEM  _plusRbrc_combo[]      =  {KC_PLUS, KC_RBRC,     COMBO_END};
+const  uint16_t  PROGMEM  _sevenEight_combo_combo[]      =  {KC_7, KC_8,     COMBO_END};
 
 
 
 combo_t key_combos[] = {
 
-	COMBO(  _ne_combo,            QK_LEAD  ),
-	COMBO(  _plusRbrc_combo,      QK_LEAD  ),
+	COMBO(  _ne_combo,                 QK_LEAD       ),
+	COMBO(  _plusRbrc_combo,           QK_LEAD       ),
+	COMBO(  _sevenEight_combo_combo,   QK_LEAD       ),
 
-	COMBO(  _uy_combo,      OSM(MOD_LCTL)  ),
-	COMBO(  _wf_combo,      OSM(MOD_LCTL)  ),
+	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
+	COMBO(  _wf_combo,                 OSM(MOD_LCTL) ),
 
-	COMBO(  _rs_combo,      OSM(MOD_LSFT)  ),
-	COMBO(  _ei_combo,      OSM(MOD_LSFT)  ),
+	COMBO(  _rs_combo,                 OSM(MOD_LSFT) ),
+	COMBO(  _ei_combo,                 OSM(MOD_LSFT) ),
 
-	COMBO(  _fp_combo,      OSL(5)         ),
-	COMBO(  _fplu_combo,    TO(5)          ),
-	COMBO(  _lu_combo,      OSL(5)          ),
+	COMBO(  _fplu_combo,               TO(5)         ),
+	COMBO(  _amprAstr_combo,           TO(5)         ),
+	COMBO(  _fp_combo,                 OSL(5)        ),
+	COMBO(  _lu_combo,                 OSL(5)        ),
 
-	COMBO(  _rsei_combo,    CW_TOGG        ),
-	COMBO(  _wfuy_combo,    KC_CAPS        ),
+	COMBO(  _rsei_combo,               CW_TOGG       ),
+	COMBO(  _wfuy_combo,               KC_CAPS       ),
 
 };
 
