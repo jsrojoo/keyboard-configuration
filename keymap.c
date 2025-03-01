@@ -17,17 +17,25 @@ const  uint16_t  PROGMEM  _fp_combo[]      =  {KC_F,    KC_P,     COMBO_END};
 
 const  uint16_t  PROGMEM  _lu_combo[]      =  {KC_L,    KC_U,     COMBO_END};
 const  uint16_t  PROGMEM  _ne_combo[]      =  {KC_N,    KC_E,     COMBO_END};
+
+
 const  uint16_t  PROGMEM  _amprAstr_combo[]      =  {KC_AMPR, KC_ASTR,     COMBO_END};
 const  uint16_t  PROGMEM  _plusRbrc_combo[]      =  {KC_PLUS, KC_RBRC,     COMBO_END};
-const  uint16_t  PROGMEM  _sevenEight_combo_combo[]      =  {KC_7, KC_8,     COMBO_END};
+const  uint16_t  PROGMEM  _sevenEight_combo[]    =  {KC_7, KC_8,     COMBO_END};
 
-
+const  uint16_t  PROGMEM  _lBrcEql_combo[]    =  {KC_LBRC, KC_EQL,     COMBO_END};
+const  uint16_t  PROGMEM  _st_combo[]    =  {KC_S, KC_T,     COMBO_END};
+const  uint16_t  PROGMEM  _threeFour_combo[]    =  {KC_3, KC_4,     COMBO_END};
 
 combo_t key_combos[] = {
 
 	COMBO(  _ne_combo,                 QK_LEAD       ),
 	COMBO(  _plusRbrc_combo,           QK_LEAD       ),
-	COMBO(  _sevenEight_combo_combo,   QK_LEAD       ),
+	COMBO(  _threeFour_combo,          QK_LEAD       ),
+
+	COMBO(  _sevenEight_combo,         QK_LEAD       ),
+	COMBO(  _st_combo,                 QK_LEAD       ),
+	COMBO(  _lBrcEql_combo,            QK_LEAD       ),
 
 	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
 	COMBO(  _wf_combo,                 OSM(MOD_LCTL) ),
@@ -49,47 +57,52 @@ void leader_start_user(void) {
     // Do something when the leader key is pressed
 }
 
+void _turn_on_layer_zero(void) {
+  layer_off(1);
+  layer_off(2);
+  layer_off(3);
+  layer_off(5);
+  layer_on(0);
+}
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_A)) {
-        layer_off(1);
-        layer_off(2);
-        layer_off(3);
-        layer_off(5);
-        layer_on(0);
+        _turn_on_layer_zero();
+        tap_code16(KC_ESC);
     } else if (leader_sequence_one_key(KC_LPRN)) {
-        layer_off(1);
-        layer_off(2);
-        layer_off(3);
-        layer_off(5);
-        layer_on(0);
+        _turn_on_layer_zero();
+        tap_code16(KC_ESC);
     } else if (leader_sequence_one_key(KC_1)) {
-        layer_off(1);
-        layer_off(2);
-        layer_off(3);
-        layer_off(5);
-        layer_on(0);
-    } else if (leader_sequence_one_key(KC_Q)) {
+        _turn_on_layer_zero();
         tap_code16(KC_ESC);
     } else if (leader_sequence_one_key(QK_LEAD)) {
-        layer_on(5);
-    } else if (leader_sequence_one_key(KC_S)) {
-        tap_code16(KC_QUOT);
+        _turn_on_layer_zero();
+    } else if (leader_sequence_one_key(KC_N)) {
+        _turn_on_layer_zero();
     } else if (leader_sequence_one_key(KC_T)) {
-        tap_code16(KC_DQUO);
-    } else if (leader_sequence_one_key(KC_LBRC)) {
+        layer_on(1);
+    } else if (leader_sequence_one_key(KC_S)) {
+        layer_on(5);
+    } else if (leader_sequence_one_key(KC_7)) {
+        _turn_on_layer_zero();
+    } else if (leader_sequence_one_key(KC_PLUS)) {
+        _turn_on_layer_zero();
+    } else if (leader_sequence_one_key(KC_R)) {
         tap_code16(KC_QUOT);
-    } else if (leader_sequence_one_key(KC_EQL)) {
+    } else if (leader_sequence_one_key(KC_I)) {
         tap_code16(KC_DQUO);
+    } else if (leader_sequence_one_key(KC_LCBR)) {
+        tap_code16(KC_QUOT);
+    } else if (leader_sequence_one_key(KC_RCBR)) {
+        tap_code16(KC_DQUO);
+    } else if (leader_sequence_one_key(KC_2)) {
+        tap_code16(KC_QUOT);
+    } else if (leader_sequence_one_key(KC_9)) {
+        tap_code16(KC_DQUO);
+    } else if (leader_sequence_two_keys(KC_S, KC_T)) {
+        layer_on(1);
     } else if (leader_sequence_two_keys(KC_D, KC_W)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-        /*SEND_STRING(SS_LCTL("a") SS_LCTL("c"));*/
         tap_code16(LCTL(KC_BSPC));
-    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-        // Leader, d, d, s => Types the below string
-        SEND_STRING("https://start.duckduckgo.com\n");
-    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
-        // Leader, a, s => GUI+S
-        tap_code16(LGUI(KC_S));
     }
 }
 
@@ -100,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							              KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    KC_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	 						              KC_H, KC_N, KC_E, KC_I, KC_O, KC_MINS,
+		    KC_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	 						              KC_H, KC_N, KC_E, KC_I, KC_O, KC_KP_MINUS,
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
@@ -114,9 +127,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,						    KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO,
 
-		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_MINS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(5), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
     [2] = LAYOUT(
@@ -128,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(5), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -140,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(5), TO(2), QK_BOOT
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), QK_BOOT
 		    ),
 
     [4] = LAYOUT(
@@ -161,11 +174,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
+		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_KP_MINUS,
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(5), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 
 		   ),
 };
