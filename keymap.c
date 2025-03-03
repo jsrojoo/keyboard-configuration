@@ -27,6 +27,13 @@ const  uint16_t  PROGMEM  _lBrcEql_combo[]    =  {KC_LBRC, KC_EQL,     COMBO_END
 const  uint16_t  PROGMEM  _st_combo[]    =  {KC_S, KC_T,     COMBO_END};
 const  uint16_t  PROGMEM  _threeFour_combo[]    =  {KC_3, KC_4,     COMBO_END};
 
+const  uint16_t  PROGMEM  _lBrcLcbr_combo[]    =  {KC_LCBR, KC_LBRC,     COMBO_END};
+const  uint16_t  PROGMEM  _rBrcRcbr_combo[]    =  {KC_RBRC, KC_RCBR,     COMBO_END};
+
+const  uint16_t  PROGMEM  _twoThree_combo[]    =   {KC_2, KC_3,     COMBO_END};
+const  uint16_t  PROGMEM  _eightNine_combo[]    =  {KC_8, KC_9,     COMBO_END};
+
+
 combo_t key_combos[] = {
 
 	COMBO(  _ne_combo,                 QK_LEAD       ),
@@ -36,6 +43,11 @@ combo_t key_combos[] = {
 	COMBO(  _sevenEight_combo,         QK_LEAD       ),
 	COMBO(  _st_combo,                 QK_LEAD       ),
 	COMBO(  _lBrcEql_combo,            QK_LEAD       ),
+
+	COMBO(  _lBrcLcbr_combo,           TO(0)         ),
+	COMBO(  _rBrcRcbr_combo,           TO(0)         ),
+	COMBO(  _twoThree_combo,           TO(0)         ),
+	COMBO(  _eightNine_combo,          TO(0)         ),
 
 	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
 	COMBO(  _wf_combo,                 OSM(MOD_LCTL) ),
@@ -85,8 +97,11 @@ void leader_end_user(void) {
         layer_on(5);
     } else if (leader_sequence_one_key(KC_7)) {
         _turn_on_layer_zero();
-    } else if (leader_sequence_one_key(KC_PLUS)) {
+    } else if (leader_sequence_one_key(KC_LBRC)) {
+        layer_on(5);
+    } else if (leader_sequence_one_key(KC_4)) {
         _turn_on_layer_zero();
+        layer_on(1);
     } else if (leader_sequence_one_key(KC_R)) {
         tap_code16(KC_QUOT);
     } else if (leader_sequence_one_key(KC_I)) {
