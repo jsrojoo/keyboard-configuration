@@ -75,12 +75,19 @@ void _turn_on_layer_zero(void) {
   layer_off(3);
   layer_off(5);
   layer_on(0);
+  clear_oneshot_mods();
 }
 
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_A)) {
         _turn_on_layer_zero();
         tap_code16(KC_ESC);
+    } else if (leader_sequence_one_key(KC_E)) {
+        _turn_on_layer_zero();
+        set_oneshot_mods(MOD_BIT(KC_LSFT));
+    } else if (leader_sequence_one_key(KC_I)) {
+        _turn_on_layer_zero();
+        set_oneshot_mods(MOD_BIT(KC_LSFT));
     } else if (leader_sequence_one_key(KC_LPRN)) {
         _turn_on_layer_zero();
         tap_code16(KC_ESC);
@@ -90,6 +97,8 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(QK_LEAD)) {
         _turn_on_layer_zero();
     } else if (leader_sequence_one_key(KC_N)) {
+        _turn_on_layer_zero();
+    } else if (leader_sequence_one_key(KC_PLUS)) {
         _turn_on_layer_zero();
     } else if (leader_sequence_one_key(KC_T)) {
         layer_on(1);
@@ -114,6 +123,8 @@ void leader_end_user(void) {
         tap_code16(KC_QUOT);
     } else if (leader_sequence_one_key(KC_9)) {
         tap_code16(KC_DQUO);
+    } else if (leader_sequence_two_keys(KC_E, KC_I)) {
+        _turn_on_layer_zero();
     } else if (leader_sequence_two_keys(KC_S, KC_T)) {
         layer_on(1);
     } else if (leader_sequence_two_keys(KC_D, KC_W)) {
@@ -132,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
-		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(1), TO(2), TO(3)
+		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, QK_LEAD, TO(2), TO(3)
 		    ),
 
     [1] = LAYOUT(
@@ -144,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 		   ),
 
     [2] = LAYOUT(
@@ -156,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -168,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), QK_BOOT
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), QK_BOOT
 		    ),
 
     [4] = LAYOUT(
@@ -193,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 
 		   ),
 };
