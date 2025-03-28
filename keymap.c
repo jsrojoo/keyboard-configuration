@@ -75,60 +75,30 @@ void _turn_on_layer_zero(void) {
   layer_off(3);
   layer_off(5);
   layer_on(0);
+  clear_mods();
   clear_oneshot_mods();
 }
 
+enum custom_keycodes {
+  QMK_BASE_LAYER = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case QMK_BASE_LAYER:
+      _turn_on_layer_zero();
+      break;
+  }
+  return true;
+};
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_A)) {
-        _turn_on_layer_zero();
-        tap_code16(KC_ESC);
-    } else if (leader_sequence_one_key(KC_E)) {
-        _turn_on_layer_zero();
-        set_oneshot_mods(MOD_BIT(KC_LSFT));
-    } else if (leader_sequence_one_key(KC_I)) {
-        _turn_on_layer_zero();
-        set_oneshot_mods(MOD_BIT(KC_LSFT));
-    } else if (leader_sequence_one_key(KC_LPRN)) {
-        _turn_on_layer_zero();
-        tap_code16(KC_ESC);
-    } else if (leader_sequence_one_key(KC_1)) {
-        _turn_on_layer_zero();
-        tap_code16(KC_ESC);
-    } else if (leader_sequence_one_key(QK_LEAD)) {
-        _turn_on_layer_zero();
-    } else if (leader_sequence_one_key(KC_N)) {
-        _turn_on_layer_zero();
-    } else if (leader_sequence_one_key(KC_PLUS)) {
         _turn_on_layer_zero();
     } else if (leader_sequence_one_key(KC_T)) {
         layer_on(1);
     } else if (leader_sequence_one_key(KC_S)) {
         layer_on(5);
-    } else if (leader_sequence_one_key(KC_7)) {
-        _turn_on_layer_zero();
-    } else if (leader_sequence_one_key(KC_LBRC)) {
-        layer_on(5);
-    } else if (leader_sequence_one_key(KC_4)) {
-        _turn_on_layer_zero();
-        layer_on(1);
-    } else if (leader_sequence_one_key(KC_R)) {
-        tap_code16(KC_QUOT);
-    } else if (leader_sequence_one_key(KC_I)) {
-        tap_code16(KC_DQUO);
-    } else if (leader_sequence_one_key(KC_LCBR)) {
-        tap_code16(KC_QUOT);
-    } else if (leader_sequence_one_key(KC_RCBR)) {
-        tap_code16(KC_DQUO);
-    } else if (leader_sequence_one_key(KC_2)) {
-        tap_code16(KC_QUOT);
-    } else if (leader_sequence_one_key(KC_9)) {
-        tap_code16(KC_DQUO);
-    } else if (leader_sequence_two_keys(KC_E, KC_I)) {
-        _turn_on_layer_zero();
-    } else if (leader_sequence_two_keys(KC_S, KC_T)) {
-        layer_on(1);
-    } else if (leader_sequence_two_keys(KC_D, KC_W)) {
-        tap_code16(LCTL(KC_BSPC));
     }
 }
 
@@ -139,9 +109,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							              KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    KC_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	 						              KC_H, KC_N, KC_E, KC_I, KC_O, KC_KP_MINUS,
+		    KC_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	 						              KC_H, KC_N, KC_E, KC_I, KC_O, OSM(MOD_LSFT),
 
-		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
+		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
 		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, QK_LEAD, TO(2), TO(3)
 		    ),
@@ -151,9 +121,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_GRV, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, 					    KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,						    KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO,
+		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,						    KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, QMK_BASE_LAYER,
 
-		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
 		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 		   ),
@@ -163,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_Q, KC_NO, KC_UP, KC_NO, KC_NO,						 	           KC_NO, KC_7, KC_8, KC_9, KC_0, KC_DEL,
 
-		   TO(0), KC_A, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						       KC_TRNS, LCTL_T(KC_4), LSFT_T(KC_5), LALT_T(KC_6), LGUI_T(KC_0), KC_NO,
+		   TO(0), KC_A, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						       KC_TRNS, LCTL_T(KC_4), LSFT_T(KC_5), LALT_T(KC_6), LGUI_T(KC_0), QMK_BASE_LAYER,
 
-		   KC_NO, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, KC_NO,
+		   QMK_BASE_LAYER, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, QMK_BASE_LAYER,
 
 		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 		   ),
@@ -202,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_KP_MINUS,
 
-		    KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_LCTL,
+		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
 		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
 
