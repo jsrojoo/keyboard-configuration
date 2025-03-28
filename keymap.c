@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, QK_LEAD, TO(2), TO(3)
+		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(1), TO(2), TO(3)
 		    ),
 
     [1] = LAYOUT(
