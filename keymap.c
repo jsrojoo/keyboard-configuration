@@ -93,13 +93,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_A)) {
-        _turn_on_layer_zero();
-    } else if (leader_sequence_one_key(KC_T)) {
-        layer_on(1);
-    } else if (leader_sequence_one_key(KC_S)) {
-        layer_on(5);
-    }
+  if (leader_sequence_one_key(KC_A)) {
+    _turn_on_layer_zero();
+  } else if (leader_sequence_one_key(KC_LPRN)) {
+    _turn_on_layer_zero();
+  } else if (leader_sequence_one_key(KC_1)) {
+    _turn_on_layer_zero();
+  } else if (leader_sequence_one_key(KC_T)) {
+    layer_on(1);
+  } else if (leader_sequence_one_key(KC_S)) {
+    layer_on(5);
+  }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
