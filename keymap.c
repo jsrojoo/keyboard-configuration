@@ -7,7 +7,7 @@ const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,     COMBO_END};
 const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,     COMBO_END};
 const  uint16_t  PROGMEM  _wfuy_combo[]      =  {KC_W,    KC_F, KC_U,    KC_Y,     COMBO_END};
 
-const  uint16_t  PROGMEM  _rsei_combo[]    =  {LSFT_T(KC_R), KC_S,     KC_E, LSFT_T(KC_I),        COMBO_END};
+const  uint16_t  PROGMEM  _rsei_combo[]    =  {KC_R, KC_S,     KC_E, KC_I,        COMBO_END};
 const  uint16_t  PROGMEM  _rs_combo[]      =  {KC_R,    KC_S,     COMBO_END};
 const  uint16_t  PROGMEM  _ei_combo[]      =  {KC_E,    KC_I,     COMBO_END};
 const  uint16_t  PROGMEM  _wfp_combo[]     =  {KC_W,    KC_F,     KC_P,        COMBO_END};
@@ -36,29 +36,8 @@ const  uint16_t  PROGMEM  _eightNine_combo[]    =  {KC_8, KC_9,     COMBO_END};
 
 combo_t key_combos[] = {
 
-	/*COMBO(  _ne_combo,                 QK_LEAD       ),*/
-	/*COMBO(  _plusRbrc_combo,           QK_LEAD       ),*/
-	/*COMBO(  _threeFour_combo,          QK_LEAD       ),*/
-	/**/
-	/*COMBO(  _sevenEight_combo,         QK_LEAD       ),*/
-	/*COMBO(  _st_combo,                 QK_LEAD       ),*/
-	/*COMBO(  _lBrcEql_combo,            QK_LEAD       ),*/
-
-	/*COMBO(  _lBrcLcbr_combo,           TO(0)         ),*/
-	/*COMBO(  _rBrcRcbr_combo,           TO(0)         ),*/
-	/*COMBO(  _twoThree_combo,           TO(0)         ),*/
-	/*COMBO(  _eightNine_combo,          TO(0)         ),*/
-
 	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
 	COMBO(  _wf_combo,                 OSM(MOD_LCTL) ),
-
-	/*COMBO(  _rs_combo,                 OSM(MOD_LSFT) ),*/
-	/*COMBO(  _ei_combo,                 OSM(MOD_LSFT) ),*/
-
-	/*COMBO(  _fplu_combo,               TO(5)         ),*/
-	/*COMBO(  _amprAstr_combo,           TO(5)         ),*/
-	/*COMBO(  _fp_combo,                 OSL(5)        ),*/
-	/*COMBO(  _lu_combo,                 OSL(5)        ),*/
 
 	COMBO(  _rsei_combo,               CW_TOGG       ),
 	COMBO(  _wfuy_combo,               KC_CAPS       ),
@@ -113,11 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							              KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    KC_ESC, KC_A, LSFT_T(KC_R), KC_S, LT(5, KC_T), KC_D,	          KC_H, LT(5, KC_N), KC_E, LSFT_T(KC_I), KC_O, OSM(MOD_LSFT),
+		    KC_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	                          KC_H, KC_N, KC_E, KC_I, KC_O, KC_ENT,
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					TO(2), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(1), TO(2), TO(3)
+		    					TO(2), TO(3), OSL(1), LT(5, KC_SPC),		            OSM(MOD_LSFT), OSL(1), TO(2), TO(3)
 		    ),
 
     [1] = LAYOUT(
@@ -129,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), LT(5, KC_SPC),		 OSM(MOD_LSFT), QK_LEAD, TO(2), TO(3)
 		   ),
 
     [2] = LAYOUT(
@@ -141,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   QMK_BASE_LAYER, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(0), LT(5, KC_SPC),		 OSM(MOD_LSFT), QK_LEAD, TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -153,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), QK_BOOT
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), QK_LEAD, TO(2), QK_BOOT
 		    ),
 
     [4] = LAYOUT(
@@ -178,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, QK_LEAD, TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), LT(5, KC_SPC),		 OSM(MOD_LSFT), QK_LEAD, TO(2), TO(3)
 
 		   ),
 };
