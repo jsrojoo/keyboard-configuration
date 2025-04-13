@@ -7,7 +7,7 @@ const  uint16_t  PROGMEM  _uy_combo[]      =  {KC_U,    KC_Y,     COMBO_END};
 const  uint16_t  PROGMEM  _wf_combo[]      =  {KC_W,    KC_F,     COMBO_END};
 const  uint16_t  PROGMEM  _wfuy_combo[]      =  {KC_W,    KC_F, KC_U,    KC_Y,     COMBO_END};
 
-const  uint16_t  PROGMEM  _rsei_combo[]    =  {LSFT_T(KC_R), LSFT_T(KC_S),     LSFT_T(KC_E), LSFT_T(KC_I),        COMBO_END};
+const  uint16_t  PROGMEM  _rsei_combo[]    =  {LSFT_T(KC_R), KC_S,     KC_E, LSFT_T(KC_I),        COMBO_END};
 const  uint16_t  PROGMEM  _rs_combo[]      =  {KC_R,    KC_S,     COMBO_END};
 const  uint16_t  PROGMEM  _ei_combo[]      =  {KC_E,    KC_I,     COMBO_END};
 const  uint16_t  PROGMEM  _wfp_combo[]     =  {KC_W,    KC_F,     KC_P,        COMBO_END};
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							              KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    KC_ESC, LT(1, KC_A), LSFT_T(KC_R), LSFT_T(KC_S), LT(5, KC_T), KC_D,	          KC_H, LT(5, KC_N), LSFT_T(KC_E), LSFT_T(KC_I), LT(1, KC_O), OSM(MOD_LSFT),
+		    KC_ESC, KC_A, LSFT_T(KC_R), KC_S, LT(5, KC_T), KC_D,	          KC_H, LT(5, KC_N), KC_E, LSFT_T(KC_I), KC_O, OSM(MOD_LSFT),
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
