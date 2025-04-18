@@ -66,9 +66,18 @@ enum {
   TD_BASE_ESC,
 };
 
+void base_escape_fn(tap_dance_state_t *state, void *user_data) {
+  if (state->count >= 2) {
+    tap_code(KC_ESC);
+    reset_tap_dance(state);
+  }
+
+  _turn_on_layer_zero();
+  reset_tap_dance(state);
+}
+
 tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
-    [TD_BASE_ESC] = ACTION_TAP_DANCE_DOUBLE(QMK_BASE_LAYER, KC_ESC),
+    [TD_BASE_ESC] = ACTION_TAP_DANCE_FN(base_escape_fn),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
