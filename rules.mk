@@ -17,6 +17,7 @@ SPLIT_KEYBOARD     =  yes
 STENO_ENABLE       =  yes                                                            
 STENO_PROTOCOL     =  geminipr                                                       
 SWAP_HANDS_ENABLE  =  no        #  Enable    one-hand   typing                       
+TAP_DANCE_ENABLE  =  yes        #  Enable    one-hand   typing                       
 
 
 # If you want to change the display of OLED, you need to change here
