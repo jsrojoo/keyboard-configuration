@@ -66,19 +66,34 @@ enum {
   TD_BASE_ESC,
 };
 
-void base_escape_fn(tap_dance_state_t *state, void *user_data) {
-  if (state->count >= 2) {
-    tap_code(KC_ESC);
-    reset_tap_dance(state);
-  }
+typedef struct {
+    bool single_tap_executed;
+} td_state_t;
 
-  _turn_on_layer_zero();
-  reset_tap_dance(state);
+td_state_t td_state = {
+    .single_tap_executed = false,
+};
+
+void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1 && !td_state.single_tap_executed) {
+    _turn_on_layer_zero();
+  } else if (state->count == 2) {
+    tap_code(KC_ESC);
+  }
+}
+
+void td_finished(tap_dance_state_t *state, void *user_data) {
+    // Do nothing here — we've already handled it in on_each_tap
+}
+
+void td_reset(tap_dance_state_t *state, void *user_data) {
+    td_state.single_tap_executed = false; // Reset for next time
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_BASE_ESC] = ACTION_TAP_DANCE_FN(base_escape_fn),
+    [TD_BASE_ESC] = ACTION_TAP_DANCE_FN_ADVANCED(td_base_esc_each, td_finished, td_reset),
 };
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
