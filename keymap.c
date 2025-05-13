@@ -121,7 +121,7 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_NO, KC_DQUO, RALT_T(KC_QUOT), TO(2), KC_NO,                KC_NO, OSL(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, RALT_T(KC_QUOT), TO(2), KC_NO,                KC_NO, OSL(5), OSM(MOD_LALT), OSM(MOD_LGUI), TO(4), QK_LEAD,
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                                 KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_ESC, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_ESC,
 
-		    					TO(5), TO(3), OSL(6), KC_SPC,		            OSM(MOD_LSFT), OSL(6), TO(2), TO(3)
+		    					TO(5), TO(3), OSL(6), KC_SPC,		            OSM(MOD_LSFT), OSL(6), TO(5), TO(3)
 		    ),
 
     [1] = LAYOUT(
@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [4] = LAYOUT(
 
-		    TO(0),  KC_NO,   KC_NO,   STN_N1,    KC_NO,   KC_NO,    /*       *   *   */       TO(4),    KC_NO,  KC_NO,  STN_N1,  KC_NO,  TO(0),
+		    TO(0),  KC_NO,   KC_NO,   STN_N1,    KC_NO,   KC_NO,    /*       *   *   */       TO(4),    KC_NO,  KC_NO,  STN_N1,  TO(0),  TO(0),
 
 		    KC_NO,  STN_S1,  STN_TL,  STN_PL,   STN_HL,  STN_ST1,  /*       *   *   */       STN_ST3,  STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
 
