@@ -23,7 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 500
-#define PERMISSIVE_HOLD
 #define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
 #define ONESHOT_TIMEOUT 1000  /* Time (in ms) before the one shot key is released */
 #define FORCE_NKRO
