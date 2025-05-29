@@ -10,6 +10,12 @@ const  uint16_t  PROGMEM  _wfuy_combo[]  =  {KC_W,  KC_F,  KC_U,        KC_Y,  C
 const  uint16_t  PROGMEM  _ie_combo[]    =  {KC_I,  KC_E,  COMBO_END};         
 const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,  KC_S,  COMBO_END};         
 
+const  uint16_t  PROGMEM  lbrc_lcbr[]    =  {KC_LBRC, KC_LCBR,  COMBO_END};         
+const  uint16_t  PROGMEM  rbrc_rcbr[]    =  {KC_RBRC, KC_RCBR,  COMBO_END};         
+
+const  uint16_t  PROGMEM  two_three[]   =  {KC_2, KC_3,  COMBO_END};         
+const  uint16_t  PROGMEM  eight_nine[]    =  {KC_8, KC_9,  COMBO_END};         
+
 combo_t key_combos[] = {
 
 	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
@@ -20,6 +26,11 @@ combo_t key_combos[] = {
 	COMBO(  _ie_combo,                 KC_ESC       ),
 	COMBO(  _rs_combo,                 KC_ESC       ),
 
+	COMBO(  lbrc_lcbr,                 TO(0)       ),
+	COMBO(  rbrc_rcbr,                 TO(0)       ),
+
+	COMBO(  two_three,                 TO(0)       ),
+	COMBO(  eight_nine,                TO(0)       ),
 };
 
 void leader_start_user(void) {
@@ -115,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_GRV, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, 					    KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TO(0), KC_LPRN, KC_LCBR, LT(5, KC_LBRC), KC_EQL, KC_LT,				KC_GT, KC_PLUS, LT(5, KC_RBRC), KC_RCBR, KC_RPRN, KC_ENT,
+		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				 KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
