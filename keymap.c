@@ -17,20 +17,18 @@ const  uint16_t  PROGMEM  two_three[]   =  {KC_2, KC_3,  COMBO_END};
 const  uint16_t  PROGMEM  eight_nine[]    =  {KC_8, KC_9,  COMBO_END};         
 
 combo_t key_combos[] = {
+  COMBO(  _uy_combo,    OSM(MOD_LCTL)  ),
+  COMBO(  _wf_combo,    OSM(MOD_LCTL)  ),
+  COMBO(  _rsei_combo,  CW_TOGG        ),
+  COMBO(  _wfuy_combo,  KC_CAPS        ),
 
-	COMBO(  _uy_combo,                 OSM(MOD_LCTL) ),
-	COMBO(  _wf_combo,                 OSM(MOD_LCTL) ),
+  COMBO(  _rs_combo,    KC_ESC         ),
+  COMBO(  _ie_combo,    KC_ESC         ),
 
-	COMBO(  _rsei_combo,               CW_TOGG       ),
-	COMBO(  _wfuy_combo,               KC_CAPS       ),
-	COMBO(  _ie_combo,                 KC_ESC       ),
-	COMBO(  _rs_combo,                 KC_ESC       ),
-
-	COMBO(  lbrc_lcbr,                 TO(0)       ),
-	COMBO(  rbrc_rcbr,                 TO(0)       ),
-
-	COMBO(  two_three,                 TO(0)       ),
-	COMBO(  eight_nine,                TO(0)       ),
+  COMBO(  lbrc_lcbr,    TO(0)          ),
+  COMBO(  rbrc_rcbr,    TO(0)          ),
+  COMBO(  two_three,    TO(0)          ),
+  COMBO(  eight_nine,   TO(0)          ),
 };
 
 void leader_start_user(void) {
@@ -118,19 +116,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), OSL(6), LT(5, KC_SPC),		            OSM(MOD_LSFT), OSL(6), TO(5), TO(3)
+		    					TO(5), TO(3), OSL(6), KC_SPC,		            OSM(MOD_LSFT), OSL(6), TO(5), TO(3)
 		    ),
 
     [1] = LAYOUT(
 		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_GRV, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, 					    KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
+		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
 		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				 KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), LT(5, KC_SPC),		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
     [2] = LAYOUT(
@@ -142,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   QMK_BASE_LAYER, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_NO, KC_1, KC_2, KC_3, KC_NO, QMK_BASE_LAYER,
 
-		    					LT(5,KC_PSCR), TO(3), TO(0), LT(5, KC_SPC),		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(5,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -179,20 +177,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), LT(5, KC_SPC),		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 
 		   ),
 
     [6] = LAYOUT(
 		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_GRV, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, 					    KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
+		   KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TO(0), KC_LPRN, KC_LCBR, LT(5, KC_LBRC), KC_EQL, KC_LT,				KC_GT, KC_PLUS, LT(5, KC_RBRC), KC_RCBR, KC_RPRN, KC_ENT,
+		   TO(0),  KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				      KC_GT,   KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   KC_ESC, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), LT(5, KC_SPC),		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
 };
