@@ -6,6 +6,7 @@ CAPS_WORD_ENABLE   =  yes
 COMBO_ENABLE       =  yes                                                            
 COMMAND_ENABLE     =  no        #  Commands  for        debug         and            configuration
 CONSOLE_ENABLE     =  no        #  Console   for        debug                        
+DYNAMIC_TAPPING_TERM_ENABLE = yes
 EXTRAKEY_ENABLE    =  yes       #  Audio     control    and           System         control
 LEADER_ENABLE      =  yes                                                            
 LTO_ENABLE         =  yes       #  Link      Time       Optimization  enabled        
@@ -17,8 +18,7 @@ SPLIT_KEYBOARD     =  yes
 STENO_ENABLE       =  yes                                                            
 STENO_PROTOCOL     =  geminipr                                                       
 SWAP_HANDS_ENABLE  =  no        #  Enable    one-hand   typing                       
-TAP_DANCE_ENABLE  =  yes        #  Enable    one-hand   typing                       
-
+TAP_DANCE_ENABLE  =  yes
 
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/rgb_state_reader.c \
