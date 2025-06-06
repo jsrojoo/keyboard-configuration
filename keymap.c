@@ -22,8 +22,8 @@ combo_t key_combos[] = {
   COMBO(  _rsei_combo,  CW_TOGG        ),
   COMBO(  _wfuy_combo,  KC_CAPS        ),
 
-  COMBO(  _rs_combo,    KC_ESC         ),
-  COMBO(  _ie_combo,    KC_ESC         ),
+  /*COMBO(  _rs_combo,    KC_ESC         ),*/
+  /*COMBO(  _ie_combo,    KC_ESC         ),*/
 
   COMBO(  lbrc_lcbr,    TO(0)          ),
   COMBO(  rbrc_rcbr,    TO(0)          ),
@@ -108,15 +108,15 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_NO, KC_DQUO, RALT_T(KC_QUOT), TO(2), KC_NO,                KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), TO(4), QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, RALT_T(KC_QUOT), TO(2), KC_NO,                       KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), TO(4), QK_LEAD,
 
 		    KC_TAB, KC_Q, KC_W, LT(1, KC_F), KC_P, KC_G,                                 KC_J, KC_L, LT(1, KC_U), KC_Y, KC_SCLN, KC_BSPC,
 
-		    TD(TD_BASE_ESC), KC_A, KC_R, LT(2, KC_S), KC_T, KC_D,	                      KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
+		    TD(TD_BASE_ESC), KC_A, LSFT_T(KC_R), LT(2, KC_S), LSFT_T(KC_T), KC_D,	       KC_H, LSFT_T(KC_N), LT(2, KC_E), LSFT_T(KC_I), KC_O, KC_ENT,
 
-		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					        KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					                    KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), OSL(6), KC_SPC,		            OSM(MOD_LSFT), OSL(6), TO(5), TO(3)
+		    					TO(5), TO(3), OSM(MOD_LSFT), KC_SPC,		            KC_ENT, OSM(MOD_LSFT), TO(5), TO(3)
 		    ),
 
     [1] = LAYOUT(
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				 KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
-		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
+		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_DQUO, KC_PIPE, KC_SLSH, QMK_BASE_LAYER,
 
 		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
@@ -134,17 +134,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
 		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                        KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_NO, KC_Q, KC_NO, KC_UP, KC_NO, KC_NO,						 	                    KC_NO, KC_1, KC_3, KC_5, KC_7, KC_9,
+		   KC_NO, KC_ESC, KC_ESC, KC_UP, KC_SPC, KC_NO,						 	                    KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
 
-		   TO(0), KC_A, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						            KC_TRNS, KC_2, KC_4, KC_6, KC_8, KC_0,
+		   TO(0), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						              KC_2, KC_4, KC_6, KC_8, KC_0, KC_ENT,
 
-		   QMK_BASE_LAYER, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		   QMK_BASE_LAYER, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, KC_PSCR, KC_LT,				 KC_GT, KC_ENT, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					LT(5,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
 		   ),
 
     [3] = LAYOUT(
-		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		        KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, QK_BOOT,		        KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
 		    KC_NO, KC_BTN1, KC_BTN1, KC_MS_U, KC_BTN2, KC_NO,				 		KC_NO, KC_BTN1, KC_WH_U, KC_BTN2, KC_BTN1, KC_NO,
 
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, DT_UP, DT_DOWN, DT_PRNT, KC_NO, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), QK_BOOT
+		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), KC_NO
 		    ),
 
     [4] = LAYOUT(
