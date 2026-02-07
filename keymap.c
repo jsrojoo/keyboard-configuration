@@ -53,6 +53,10 @@ enum {
   TD_BASE_ESC,
 };
 
+enum {
+  TD_CAPS_RECENT_TIMEOUT_MS = 30,
+};
+
 typedef struct {
     bool single_tap_executed;
 } td_state_t;
@@ -61,15 +65,23 @@ td_state_t td_state = {
     .single_tap_executed = false,
 };
 
+static bool caps_word_recently_disabled = false;
+static uint16_t caps_word_recently_disabled_timer = 0;
+
 void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
   const bool caps_word_active = is_caps_word_on();
+  const bool caps_word_recent =
+      caps_word_recently_disabled &&
+      timer_elapsed(caps_word_recently_disabled_timer) <=
+          TD_CAPS_RECENT_TIMEOUT_MS;
+  const bool caps_word_effective_active = caps_word_active || caps_word_recent;
   const bool caps_lock_active = host_keyboard_led_state().caps_lock;
   const uint8_t mods_active = get_mods();
   const uint8_t oneshot_active = get_oneshot_mods();
   const bool base_layer_active = get_highest_layer(layer_state) == 0;
   const bool should_send_escape = base_layer_active &&
                                   !(mods_active | oneshot_active |
-                                    (caps_word_active ? 1 : 0) |
+                                    (caps_word_effective_active ? 1 : 0) |
                                     (caps_lock_active ? 1 : 0));
 
   if (state->count == 1 && !td_state.single_tap_executed) {
@@ -79,8 +91,9 @@ void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
       return;
     }
 
-    if (caps_word_active) {
+    if (caps_word_effective_active) {
       caps_word_off();
+      caps_word_recently_disabled = false;
     }
 
     if (caps_lock_active) {
@@ -112,6 +125,16 @@ void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
     _turn_on_layer_zero();
     tap_code(KC_ESC);
   }
+}
+
+void caps_word_set_user(bool active) {
+  if (active) {
+    caps_word_recently_disabled = false;
+    return;
+  }
+
+  caps_word_recently_disabled = true;
+  caps_word_recently_disabled_timer = timer_read();
 }
 
 void td_finished(tap_dance_state_t *state, void *user_data) {
@@ -173,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_DQUO, KC_PIPE, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), TO(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		   ),
 
     [2] = LAYOUT(
