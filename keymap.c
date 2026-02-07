@@ -3,8 +3,8 @@
 #    include "keymap.h"
 #endif
 
-const  uint16_t  PROGMEM  _uy_combo[]    =  {KC_U,  KC_Y,  COMBO_END};         
-const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  KC_F,  COMBO_END};         
+const  uint16_t  PROGMEM  _uy_combo[]    =  {KC_U,  KC_Y,  COMBO_END};
+const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  KC_F,  COMBO_END};
 
 combo_t key_combos[] = {
   COMBO(  _uy_combo,    OSM(MOD_LCTL)  ),
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,				KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), OSL(1), KC_SPC,		            OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
+		    					TO(5), TO(3), OSL(1), KC_SPC,		            OSM(MOD_LSFT), OSL(6), OSM(MOD_LGUI), OSM(MOD_LALT)
 		    ),
 
     [1] = LAYOUT(
@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT(
 		   KC_F11, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,		                     KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
 
-		   KC_NO, KC_F11, KC_F12, KC_UP, KC_SPC, KC_NO,						 	             KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
+		   KC_NO, KC_F11, KC_F12, KC_UP, KC_SPC, KC_NO,						 	             KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC,
 
 		   TD(TD_BASE_ESC), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 				KC_2, KC_4, KC_6, KC_8, KC_0, KC_ENT,
 
@@ -230,15 +230,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   ),
 
     [6] = LAYOUT(
-		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		   KC_GRV, KC_1, KC_2, KC_2, KC_4, KC_5,                          KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
 
-		   KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
+		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TD(TD_BASE_ESC),  KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				      KC_GT,   KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
+		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
-		   KC_ESC, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
+		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_DQUO, KC_PIPE, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
+		    					TO(5), TO(3), TO(1), KC_SPC,		            OSM(MOD_LSFT), TO(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		   ),
 
 };
