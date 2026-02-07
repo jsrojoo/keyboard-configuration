@@ -4,11 +4,11 @@
 #endif
 
 const  uint16_t  PROGMEM  _uy_combo[]    =  {LT(1, KC_U),  KC_Y,  COMBO_END};         
-const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  LT(1, KC_F),  COMBO_END};         
-const  uint16_t  PROGMEM  _rsei_combo[]  =  {KC_R,  LT(2, KC_S),  LT(2, KC_E),        KC_I,  COMBO_END};
-const  uint16_t  PROGMEM  _wfuy_combo[]  =  {KC_W,  LT(1, KC_F),  LT(1, KC_U),        KC_Y,  COMBO_END};
+const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  KC_F,  COMBO_END};         
+const  uint16_t  PROGMEM  _rsei_combo[]  =  {KC_R,  KC_S,  LT(2, KC_E),        KC_I,  COMBO_END};
+const  uint16_t  PROGMEM  _wfuy_combo[]  =  {KC_W,  KC_F,  LT(1, KC_U),        KC_Y,  COMBO_END};
 const  uint16_t  PROGMEM  _ie_combo[]    =  {KC_I,  LT(2, KC_E),  COMBO_END};         
-const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,  LT(2, KC_S),  COMBO_END};         
+const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,  KC_S,  COMBO_END};         
 
 const  uint16_t  PROGMEM  lbrc_lcbr[]    =  {KC_LBRC, KC_LCBR,  COMBO_END};         
 const  uint16_t  PROGMEM  rbrc_rcbr[]    =  {KC_RBRC, KC_RCBR,  COMBO_END};         
@@ -63,8 +63,37 @@ td_state_t td_state = {
 
 void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
   if (state->count == 1 && !td_state.single_tap_executed) {
-    _turn_on_layer_zero();
+    if (is_caps_word_on()) {
+      caps_word_off();
+    }
+
+    if (host_keyboard_led_state().caps_lock) {
+      tap_code(KC_CAPS);
+    }
+
+    if (get_mods() & MOD_MASK_SHIFT) {
+      del_mods(MOD_MASK_SHIFT);
+    }
+
+    if (get_oneshot_mods()) {
+      clear_oneshot_mods();
+    }
+
+    if (!(get_mods() | get_oneshot_mods() | (is_caps_word_on() ? 1 : 0) |
+          (host_keyboard_led_state().caps_lock ? 1 : 0))) {
+      tap_code(KC_ESC);
+    }
+
   } else if (state->count == 2) {
+    if (is_caps_word_on()) {
+      caps_word_off();
+    }
+
+    if (host_keyboard_led_state().caps_lock) {
+      tap_code(KC_CAPS);
+    }
+
+    _turn_on_layer_zero();
     tap_code(KC_ESC);
   }
 }
@@ -108,15 +137,15 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_1, RGUI_T(KC_2), RALT_T(KC_3), KC_4, KC_5,                       KC_6, KC_7, OSM(MOD_LALT), OSM(MOD_LGUI), KC_0, KC_GRV,
+		    KC_GRV, KC_1, RGUI_T(KC_2), RALT_T(KC_3), KC_4, KC_5,                       KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
 
-		    KC_TAB, KC_Q, KC_W, LT(1, KC_F), KC_P, KC_G,                                KC_J, KC_L, LT(1, KC_U), KC_Y, KC_SCLN, KC_BSPC,
+		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                                KC_J, KC_L, LT(1, KC_U), KC_Y, KC_SCLN, KC_BSPC,
 
-		    LSFT_T(KC_ESC), KC_A, KC_R, LT(2, KC_S), KC_T, KC_D,	                      KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, LSFT_T(KC_QUOT),
+		    TD_BASE_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	                      KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
 
 		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					                    KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), OSM(MOD_LSFT), KC_SPC,		            KC_ENT, OSM(MOD_LSFT), TO(5), TO(3)
+		    					TO(5), TO(3), OSL(1), KC_SPC,		            OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		    ),
 
     [1] = LAYOUT(
