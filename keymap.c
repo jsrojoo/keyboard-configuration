@@ -66,11 +66,19 @@ void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
   const bool caps_lock_active = host_keyboard_led_state().caps_lock;
   const uint8_t mods_active = get_mods();
   const uint8_t oneshot_active = get_oneshot_mods();
-  const bool should_send_escape = !(mods_active | oneshot_active |
+  const bool base_layer_active = get_highest_layer(layer_state) == 0;
+  const bool should_send_escape = base_layer_active &&
+                                  !(mods_active | oneshot_active |
                                     (caps_word_active ? 1 : 0) |
                                     (caps_lock_active ? 1 : 0));
 
   if (state->count == 1 && !td_state.single_tap_executed) {
+    if (!base_layer_active) {
+      _turn_on_layer_zero();
+      td_state.single_tap_executed = true;
+      return;
+    }
+
     if (caps_word_active) {
       caps_word_off();
     }
