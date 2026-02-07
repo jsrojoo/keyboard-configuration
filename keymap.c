@@ -5,30 +5,10 @@
 
 const  uint16_t  PROGMEM  _uy_combo[]    =  {LT(1, KC_U),  KC_Y,  COMBO_END};         
 const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  KC_F,  COMBO_END};         
-const  uint16_t  PROGMEM  _rsei_combo[]  =  {KC_R,  KC_S,  LT(2, KC_E),        KC_I,  COMBO_END};
-const  uint16_t  PROGMEM  _wfuy_combo[]  =  {KC_W,  KC_F,  LT(1, KC_U),        KC_Y,  COMBO_END};
-const  uint16_t  PROGMEM  _ie_combo[]    =  {KC_I,  LT(2, KC_E),  COMBO_END};         
-const  uint16_t  PROGMEM  _rs_combo[]    =  {KC_R,  KC_S,  COMBO_END};         
-
-const  uint16_t  PROGMEM  lbrc_lcbr[]    =  {KC_LBRC, KC_LCBR,  COMBO_END};         
-const  uint16_t  PROGMEM  rbrc_rcbr[]    =  {KC_RBRC, KC_RCBR,  COMBO_END};         
-
-const  uint16_t  PROGMEM  two_three[]   =  {KC_2, KC_3,  COMBO_END};         
-const  uint16_t  PROGMEM  eight_nine[]    =  {KC_8, KC_9,  COMBO_END};         
 
 combo_t key_combos[] = {
   COMBO(  _uy_combo,    OSM(MOD_LCTL)  ),
   COMBO(  _wf_combo,    OSM(MOD_LCTL)  ),
-  COMBO(  _rsei_combo,  CW_TOGG        ),
-  COMBO(  _wfuy_combo,  KC_CAPS        ),
-
-  /*COMBO(  _rs_combo,    KC_ESC         ),*/
-  /*COMBO(  _ie_combo,    KC_ESC         ),*/
-
-  COMBO(  lbrc_lcbr,    TO(0)          ),
-  COMBO(  rbrc_rcbr,    TO(0)          ),
-  COMBO(  two_three,    TO(0)          ),
-  COMBO(  eight_nine,   TO(0)          ),
 };
 
 void leader_start_user(void) {
@@ -176,23 +156,23 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_1, RGUI_T(KC_2), RALT_T(KC_3), KC_4, KC_5,                KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
+		    KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5,                KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
 
-		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                                KC_J, KC_L, LT(1, KC_U), KC_Y, KC_SCLN, KC_BSPC,
+		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	                     KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
+		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	     KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
 
-		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					             KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,				KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					TO(5), TO(3), OSL(1), KC_SPC,		            OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		    ),
 
     [1] = LAYOUT(
-		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			       KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		   KC_GRV, KC_1, KC_2, KC_2, KC_4, KC_5,                          KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
 
-		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					         KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
+		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		     KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
+		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_DQUO, KC_PIPE, KC_SLSH, QMK_BASE_LAYER,
 
@@ -200,9 +180,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   ),
 
     [2] = LAYOUT(
-		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                     KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		   KC_F11, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,		                     KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
 
-		   KC_NO, KC_ESC, KC_ESC, KC_UP, KC_SPC, KC_NO,						 	             KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
+		   KC_NO, KC_F11, KC_F12, KC_UP, KC_SPC, KC_NO,						 	             KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
 
 		   TD(TD_BASE_ESC), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 				KC_2, KC_4, KC_6, KC_8, KC_0, KC_ENT,
 
