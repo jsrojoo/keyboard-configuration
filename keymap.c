@@ -3,7 +3,7 @@
 #    include "keymap.h"
 #endif
 
-const  uint16_t  PROGMEM  _uy_combo[]    =  {LT(1, KC_U),  KC_Y,  COMBO_END};         
+const  uint16_t  PROGMEM  _uy_combo[]    =  {KC_U,  KC_Y,  COMBO_END};         
 const  uint16_t  PROGMEM  _wf_combo[]    =  {KC_W,  KC_F,  COMBO_END};         
 
 combo_t key_combos[] = {
