@@ -62,26 +62,34 @@ td_state_t td_state = {
 };
 
 void td_base_esc_each(tap_dance_state_t *state, void *user_data) {
+  const bool caps_word_active = is_caps_word_on();
+  const bool caps_lock_active = host_keyboard_led_state().caps_lock;
+  const uint8_t mods_active = get_mods();
+  const uint8_t oneshot_active = get_oneshot_mods();
+  const bool should_send_escape = !(mods_active | oneshot_active |
+                                    (caps_word_active ? 1 : 0) |
+                                    (caps_lock_active ? 1 : 0));
+
   if (state->count == 1 && !td_state.single_tap_executed) {
-    if (is_caps_word_on()) {
+    if (caps_word_active) {
       caps_word_off();
     }
 
-    if (host_keyboard_led_state().caps_lock) {
+    if (caps_lock_active) {
       tap_code(KC_CAPS);
     }
 
-    if (get_mods() & MOD_MASK_SHIFT) {
+    if (mods_active & MOD_MASK_SHIFT) {
       del_mods(MOD_MASK_SHIFT);
     }
 
-    if (get_oneshot_mods()) {
+    if (oneshot_active) {
       clear_oneshot_mods();
     }
 
-    if (!(get_mods() | get_oneshot_mods() | (is_caps_word_on() ? 1 : 0) |
-          (host_keyboard_led_state().caps_lock ? 1 : 0))) {
+    if (should_send_escape) {
       tap_code(KC_ESC);
+      td_state.single_tap_executed = true;
     }
 
   } else if (state->count == 2) {
@@ -137,51 +145,51 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_1, RGUI_T(KC_2), RALT_T(KC_3), KC_4, KC_5,                       KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
+		    KC_GRV, KC_1, RGUI_T(KC_2), RALT_T(KC_3), KC_4, KC_5,                KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV,
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                                KC_J, KC_L, LT(1, KC_U), KC_Y, KC_SCLN, KC_BSPC,
 
-		    TD_BASE_ESC, KC_A, KC_R, KC_S, KC_T, KC_D,	                      KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
+		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	                     KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_ENT,
 
-		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					                    KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					             KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					TO(5), TO(3), OSL(1), KC_SPC,		            OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		    ),
 
     [1] = LAYOUT(
-		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        			       KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
+		   KC_GRV, KC_EXLM, KC_AT, KC_HASH,  KC_DLR, KC_PERC, 					         KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TO(0), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				 KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
+		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		     KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   QMK_BASE_LAYER, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_DQUO, KC_PIPE, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		   ),
 
     [2] = LAYOUT(
-		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                          KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		   KC_GRV, KC_NO, KC_DQUO, KC_QUOT, KC_NO, KC_NO,		                     KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		   KC_NO, KC_ESC, KC_ESC, KC_UP, KC_SPC, KC_NO,						 	                  KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
+		   KC_NO, KC_ESC, KC_ESC, KC_UP, KC_SPC, KC_NO,						 	             KC_1, KC_3, KC_5, KC_7, KC_9, KC_BSPC, 
 
-		   TO(0), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 						              KC_2, KC_4, KC_6, KC_8, KC_0, KC_ENT,
+		   TD(TD_BASE_ESC), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, 				KC_2, KC_4, KC_6, KC_8, KC_0, KC_ENT,
 
 		   QMK_BASE_LAYER, KC_NO, KC_NO, KC_NO, KC_SPC, KC_NO, KC_LT,				 KC_GT, KC_NO, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), TO(0), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(5,KC_PSCR), TO(3), TO(0), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		   ),
 
     [3] = LAYOUT(
-		    KC_GRV, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, QK_BOOT,		    KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, QK_BOOT,		            KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		    KC_NO, KC_BTN1, KC_BTN1, KC_MS_U, KC_BTN2, KC_NO,				 		KC_NO, KC_BTN1, KC_WH_U, KC_BTN2, KC_BTN1, KC_NO,
+		    KC_NO, KC_BTN1, KC_BTN1, KC_MS_U, KC_BTN2, KC_NO,				 		        KC_NO, KC_BTN1, KC_WH_U, KC_BTN2, KC_BTN1, KC_NO,
 
-		    TO(0), KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,				 		  KC_NO, KC_WH_L, KC_WH_D, KC_WH_R, KC_NO, KC_NO,
+		    TD(TD_BASE_ESC), KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,				 KC_NO, KC_WH_L, KC_WH_D, KC_WH_R, KC_NO, KC_NO,
 
 		    KC_NO, DT_UP, DT_DOWN, DT_PRNT, KC_NO, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), KC_NO
+		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		    ),
 
     [4] = LAYOUT(
@@ -202,11 +210,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
 
-		    TO(0), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_ENT,
+		    TD(TD_BASE_ESC), KC_1, KC_2, KC_3, KC_4, KC_5, 							        KC_6, KC_7, KC_8, KC_9, KC_0, KC_ENT,
 
 		    QMK_BASE_LAYER, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 
 		   ),
 
@@ -215,11 +223,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC, 					  KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_SCLN, KC_BSPC,
 
-		   TO(0),  KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				      KC_GT,   KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
+		   TD(TD_BASE_ESC),  KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,				      KC_GT,   KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_ENT,
 
 		   KC_ESC, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, QMK_BASE_LAYER,
 
-		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(2), TO(3)
+		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 OSM(MOD_LSFT), OSL(1), OSM(MOD_LGUI), OSM(MOD_LALT)
 		   ),
 
 };
