@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 #define QUICK_TAP_TERM 0
-#define TAPPING_TERM 200
+#define TAPPING_TERM 175
 #define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
 #define ONESHOT_TIMEOUT 1000  /* Time (in ms) before the one shot key is released */
 #define FORCE_NKRO
@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_TIMEOUT 80
 #define LEADER_NO_TIMEOUT
 
-#define COMBO_TERM 30
+#define COMBO_TERM 60
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 
 
