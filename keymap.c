@@ -156,13 +156,13 @@ void leader_end_user(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
 
-		    KC_GRV, KC_1, LALT_T(KC_2), LGUI_T(KC_3), KC_4, KC_5,                KC_6, KC_7, RGUI_T(KC_8), RALT_T(KC_9), KC_0, KC_GRV,
+		    KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5,                KC_6, KC_7, RGUI_T(KC_8), RALT_T(KC_9), KC_0, KC_GRV,
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,                KC_J, KC_L, KC_U, KC_Y, OSM(MOD_LSFT), KC_BSPC,
 
 		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	     KC_H, KC_N, LT(2, KC_E), KC_I, KC_O, KC_QUOT,
 
-		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,				KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		    KC_NO, LT(5, KC_Z), KC_X, KC_C, KC_V, KC_B, KC_LT,				KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					TO(5), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(6), TO(5), TO(3)
 		    ),
@@ -174,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO,
 
-		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_PIPE, KC_SLSH, KC_NO,
+		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					LT(3,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(5), TO(3)
 		   ),
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   ),
 
     [3] = LAYOUT(
-		    KC_GRV, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, QK_BOOT,		         KC_NO, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, QK_BOOT,		         KC_NO, KC_NO, OSM(MOD_LGUI), OSM(MOD_LALT), KC_NO, QK_LEAD,
 
 		    KC_NO, KC_BTN1, KC_BTN1, KC_MS_U, KC_BTN2, KC_NO,				 		     KC_NO, KC_BTN1, KC_WH_U, KC_BTN2, KC_BTN1, KC_NO,
 
@@ -217,15 +217,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [5] = LAYOUT(
 
-		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		        KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
+		    KC_GRV, KC_NO, KC_DQUO, KC_QUOT, TO(2), KC_NO,		                    KC_NO, TO(5), OSM(MOD_LALT), OSM(MOD_LGUI), KC_NO, QK_LEAD,
 
-		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
+		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_7, KC_8, KC_9, KC_SCLN, KC_BSPC,
 
-		    TD(TD_BASE_ESC), KC_1, KC_2, KC_3, KC_4, KC_5, 						KC_6, KC_7, KC_8, KC_9, KC_0, KC_DQUO,
+		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	                        KC_H, KC_4, KC_5, KC_6, KC_O, KC_QUOT,
 
-		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					    KC_GT,	KC_K, KC_1, KC_2, KC_3, KC_SLSH, KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(5), TO(3)
+		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		    KC_ENT, KC_0, TO(5), TO(3)
 
 		   ),
 
@@ -236,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   TD(TD_BASE_ESC), KC_LPRN, KC_LCBR, KC_LBRC, KC_EQL, KC_LT,		KC_GT, KC_PLUS, KC_RBRC, KC_RCBR, KC_RPRN, KC_DQUO,
 
-		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_PIPE, KC_SLSH, KC_NO,
+		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
 		    					TO(5), TO(3), TO(1), KC_SPC,		            KC_ENT, TO(1), TO(5), TO(3)
 		   ),
