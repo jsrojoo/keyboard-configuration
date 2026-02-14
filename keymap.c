@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, LT(5, KC_Z), LT(2, KC_X), KC_C, KC_V, KC_B, KC_LT,	    KC_GT,	KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(6), TO(5), TO(3)
+		    					TO(5), TO(3), OSL(1), KC_SPC,		            KC_ENT, OSL(1), TO(5), TO(3)
 		    ),
 
     [1] = LAYOUT(
@@ -188,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_NO, KC_NO, KC_NO, KC_SPC, KC_NO, KC_LT,				 KC_GT, KC_NO, OSM(MOD_LALT), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), QK_LLCK, KC_SPC,		 KC_ENT, TO(1), TO(5), TO(3)
+		    					LT(5,KC_PSCR), TO(3), QK_LLCK, KC_SPC,		 KC_ENT, QK_LLCK, TO(5), TO(3)
 		   ),
 
     [3] = LAYOUT(
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_NO, DT_UP, DT_DOWN, DT_PRNT, KC_NO, KC_PSCR, KC_NO,		 		 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		    					LT(5,KC_PSCR), TO(3), TO(1), KC_SPC,		 KC_ENT, TO(1), TO(5), TO(3)
+		    					LT(5,KC_PSCR), TO(3), QK_LLCK, KC_SPC,		 KC_ENT, QK_LLCK, TO(5), TO(3)
 		    ),
 
     [4] = LAYOUT(
@@ -221,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		    KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,							        KC_J, KC_7, KC_8, KC_9, KC_SCLN, KC_BSPC,
 
-		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	                        KC_H, KC_4, KC_5, KC_6, KC_O, KC_QUOT,
+		    TD(TD_BASE_ESC), KC_A, KC_R, KC_S, KC_T, KC_D,	                        KC_H, KC_4, KC_5, KC_6, KC_0, KC_QUOT,
 
 		    KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_LT,					    KC_GT,	KC_K, KC_1, KC_2, KC_3, KC_SLSH, KC_NO,
 
@@ -238,7 +238,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		   KC_NO, KC_BSLS, KC_TILD, KC_QUOT, KC_COLN, KC_PIPE, KC_PIPE,			KC_QUES, KC_QUES, KC_KP_MINUS, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
 
-		    					TO(5), TO(3), TO(1), KC_SPC,		            KC_ENT, TO(1), TO(5), TO(3)
+		    					TO(5), TO(3), QK_LLCK, KC_SPC,		            KC_ENT, QK_LLCK, TO(5), TO(3)
 		   ),
 
 };
